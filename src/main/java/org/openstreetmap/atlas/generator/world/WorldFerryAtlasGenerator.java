@@ -41,23 +41,6 @@ public class WorldFerryAtlasGenerator extends Command
         final List<Resource> atlasFiles = FileSystemHelper.listResourcesRecursively(atlasPath,
                 configuration, new AtlasFilePathFilter());
         final MultiAtlas multiAtlas = MultiAtlas.loadFromPackedAtlas(atlasFiles);
-
-        // atlasFiles.forEach(file ->
-        // {
-        // final Atlas atlas = PackedAtlas.load(file);
-        // System.out.println(atlas.getName());
-        // atlas.nodes().forEach(System.out::println);
-        // System.out.println();
-        // });
-        // final Node node = multiAtlas.node(30987498000002L);
-        // multiAtlas.locationItemsWithin(node.bounds()).forEach(System.out::println);
-        // System.out.println("MultiAtlas: ");
-        // multiAtlas.nodes().forEach(System.out::println);
-
-        // logger.info("START: " + multiAtlas.edge(30987498002000L).start().toString());
-        // logger.info("EDGE POINTS: " + multiAtlas.edge(30987498002000L).asPolyLine().toString());
-        // logger.info("END: " + multiAtlas.edge(30987498002000L).end().toString());
-
         final PackedAtlasCloner packedAtlasCloner = new PackedAtlasCloner();
         final Atlas finalAtlas = packedAtlasCloner.cloneFrom(multiAtlas);
         finalAtlas.save(new File(outputPath));
